@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package service;
+option go_package="service";
+
+message Sum{
+    int64 FirstInt = 1;
+    int64 SecondInt = 2;
+}
+
+message SumRequest{
+    Sum sum = 1;
+}
+
+message SumResponse{
+    int64 result =1;
+}
+
+// will become an interface, and need to implement all the functions defined within this struct
+service CalculatorService{
+    rpc Add(SumRequest) returns (SumResponse) {};
+}
